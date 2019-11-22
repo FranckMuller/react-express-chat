@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+.audio {
+  height: 30px;
+  width: 155px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0.3rem;
+  overflow: hidden;
+  .progress {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: width 0.3s ease;
+  }
+
+  .progressIcon {
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 30px;
+    right: 30px;
+    background-image: url('../../assets//icons/sound-bars.svg');
+    background-repeat: repeat-x;
+    background-position-x: center center;
+  }
+
+  .audioBtn {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    z-index: 10;
+    left: 5px;
+    padding: 0.4rem;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .time {
+    font-size: 0.5rem;
+    line-height: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    z-index: 10;
+    right: 5px;
+    color: $white;
+  }
+}

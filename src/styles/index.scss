@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap');
+@import './variables.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  flex-grow: 1;
+  flex-shrink: 1;
+  max-height: 100%;
+  padding: 2rem;
+}
+
+.form-title,
+.form-description {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form {
+    max-width: $max-width-form;
+    padding: 1.2rem 2rem;
+    width: 100%;
+    .auth-form-group {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      & + .auth-form-group {
+        margin-top: 1rem;
+      }
+
+      label {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+      }
+
+      input {
+        height: 40px;
+        background-color: transparent;
+        border: 1px solid $gray;
+        border-radius: 0.3rem;
+        padding: 0 0.7rem;
+        outline: none;
+      }
+
+      &.error {
+        input {
+          border-color: $red;
+        }
+        .auth-form-notice {
+          color: $red;
+        }
+      }
+
+      &.success {
+        input {
+          border-color: $green;
+        }
+        .auth-form-notice {
+          color: $green;
+        }
+      }
+    }
+
+    .auth-form-btn {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        background-color: $blue;
+        color: $white;
+        margin: 1.5rem 0 1rem;
+        font-size: 0.8em;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        padding: 0.8em 1em;
+        border: 0;
+        border-radius: 0.2em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+
+    .auth-form-notice {
+      position: absolute;
+      font-size: 0.7rem;
+      padding: 0.1em 0.3rem;
+      font-weight: 700;
+      bottom: -10px;
+      left: 10px;
+      background-color: $white;
+    }
+  }
+  .auth-form-link {
+    color: $blue;
+  }
+}

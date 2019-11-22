@@ -1,0 +1,112 @@
+@import '../../styles/variables.scss';
+
+.message {
+  display: flex;
+  & + .message {
+    margin-top: 1.2rem;
+  }
+
+  .messageContent {
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+
+    .avatar {
+      flex: 0 0 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+    }
+
+    .bubbles {
+      .messageText,
+      .messageAudio {
+        display: inline-block;
+        background: $blue;
+        color: $white;
+        padding: 0.5em 0.8rem;
+        border-radius: 0.5em 0.5em 0.5em 0;
+        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+      }
+
+      .typingLoader {
+        transform: translateY(20px);
+      }
+    }
+
+    .attachments {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 0.5rem;
+      li {
+        overflow: hidden;
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 0.3rem;
+        & + li {
+          margin-left: 0.3rem;
+        }
+      }
+    }
+
+    .messageDate {
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+  }
+
+  &.own {
+    flex-direction: row-reverse;
+    .messageContent {
+      flex-direction: row-reverse;
+      .avatar {
+        margin-right: 0;
+        margin-left: 1rem;
+      }
+      .bubbles {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        .messageText {
+          text-align: right;
+        }
+        .messageText,
+        .messageAudio {
+          border-radius: 0.5em 0.5em 0 0.5em;
+          background: $white;
+          color: $black;
+          border: 1px solid $gray;
+          position: relative;
+          &:before {
+            content: '';
+            width: 0.8rem;
+            height: 0.8rem;
+            display: block;
+            position: absolute;
+            background-image: url('../../assets/icons/wait-chekced.svg');
+            background-position: center center;
+            background-size: 100% 100%;
+            left: -1.5rem;
+            bottom: 0;
+          }
+        }
+      }
+    }
+    &.checked {
+      .messageContent {
+        .bubbles {
+          .messageText {
+            &:before {
+              background-image: url('../../assets/icons/success-checked.svg');
+            }
+          }
+        }
+      }
+    }
+  }
+}
