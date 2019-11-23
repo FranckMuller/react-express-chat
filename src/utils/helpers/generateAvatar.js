@@ -1,4 +1,4 @@
-import tinycolor, { lighten } from 'tinycolor2';
+import tinycolor from 'tinycolor2';
 
 const generateAvatar = userId => {
   const [r, g, b] = userId

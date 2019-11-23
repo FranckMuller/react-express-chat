@@ -1,0 +1,13 @@
+.dialogList {
+  height: 100%;
+  > ul {
+    height: 100%;
+  }
+
+  > div {
+    height: 100%;
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,1 @@
+export { getAllDialogs } from './dialogs';
