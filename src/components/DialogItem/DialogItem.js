@@ -30,7 +30,7 @@ const DialogItem = ({ user, message, messageCount, isOwn }) => (
 
       <div className={styles.contentBottom}>
         <span className={styles.message}>{message.text}</span>
-        {!isOwn && !message.isChecked && <span className={styles.messageCount}>{messageCount}</span>}
+        {!isOwn && !message.isChecked && messageCount && <span className={styles.messageCount}>{messageCount}</span>}
       </div>
     </div>
   </div>
