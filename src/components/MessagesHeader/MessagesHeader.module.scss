@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.messagesHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 0.8em;
+  background-color: $dark-white;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid $gray;
+
+  .userName {
+    font-weight: 600;
+    margin-bottom: 0.45rem;
+  }
+
+  .status {
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    line-height: 9px;
+    &:before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: darken($gray, 12%);
+      margin-right: 0.3rem;
+    }
+
+    &.online {
+      &:before {
+        background-color: $green;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@import '../../styles/variables.scss';
+
+.messageInput {
+  display: flex;
+  height: 100%;
+  border-top: 1px solid $gray;
+  padding: 0.5rem;
+  button {
+    flex: 0 0 2rem;
+    height: 100%;
+    background-position: center center;
+    background-size: 1rem 1rem;
+    background-repeat: no-repeat;
+    transition: border-radius 0.3s;
+    border-radius: 50%;
+    transition: background-color 0.1s;
+    &:last-child {
+      margin-left: 0.5rem;
+    }
+    &.attachmentsBtn {
+      background-image: url('../../assets/icons/attachment.svg');
+      background-color: $light-blue;
+      &:hover {
+        background-color: darken($light-blue, 10%);
+      }
+    }
+
+    &.smileBtn {
+      background-image: url('../../assets/icons/smile.svg');
+      background-color: $orange;
+      &:hover {
+        background-color: darken($orange, 10%);
+      }
+    }
+
+    &.microBtn {
+      background-image: url('../../assets/icons/microphone.svg');
+      background-size: 1.3rem 1.3rem;
+      &:hover {
+        background-color: $gray;
+      }
+    }
+
+    &.sendBtn {
+      background-image: url('../../assets/icons/send.svg');
+      background-size: 1.3rem 1.3rem;
+      &:hover {
+        background-color: $gray;
+      }
+    }
+  }
+
+  input {
+    color: $dark-gray;
+    padding: 0 1rem;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+}

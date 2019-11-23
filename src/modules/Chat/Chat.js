@@ -1,7 +1,7 @@
 import React from 'react';
 import Dialogs from '../Dialogs/Dialogs';
 import Messages from '../Messages/Messages';
-import { SidebarHeader } from '../../components';
+import { SidebarHeader, MessagesHeader, MessageInput } from '../../components';
 
 import styles from './Chat.module.scss';
 
@@ -19,7 +19,17 @@ const Chat = () => {
       </div>
 
       <div className={styles.messages}>
-        <Messages />
+        <div className={styles.messagesHeader}>
+          <MessagesHeader />
+        </div>
+
+        <div className={styles.messageList}>
+          <Messages />
+        </div>
+
+        <div className={styles.messageInput}>
+          <MessageInput />
+        </div>
       </div>
     </div>
   );
