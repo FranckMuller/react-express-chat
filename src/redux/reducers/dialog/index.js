@@ -1,4 +1,4 @@
-export const SET_DIALOGS = 'SET_DIALOGS';
+export const UPDATE_DIALOGS = 'UPDATE_DIALOGS';
 
 const initialState = {
   items: []
@@ -6,7 +6,7 @@ const initialState = {
 
 const dialogReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_DIALOGS:
+    case UPDATE_DIALOGS:
       return {
         ...state,
         items: payload

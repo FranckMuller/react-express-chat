@@ -1,75 +1,162 @@
-import React, { Fragment } from 'react';
-import SuccessAuth from '../SuccessAuth/SuccessAuth';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useFormik } from 'formik';
+
+import { fetchAuth } from '../../redux/actions';
+import { validateForm as validate } from '../../utils';
+import SuccessAuth from '../SuccessAuth/SuccessAuth';
+import Spinner from '../Spinner/Spinner';
+
+import styles from './AuthForm.module.scss';
 
 const AuthForm = props => {
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
+  const [isLoading, toggleLoading] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      repeatPassword: '',
+      login: ''
+    },
+    validate,
+    onSubmit: values => {
+      toggleLoading(true);
+      props.onSubmit(values);
+    }
+  });
+
   const isAuthed = false;
 
   return (
-    <Fragment>
+    <div className={styles.AuthForm}>
       {!isAuthed ? (
         <div className="auth-form">
           <h3 className="form-title">Регистрация</h3>
           <p className="form-description">Пожалуйста создайте аккаунт</p>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={formik.handleSubmit}>
             <div
               className={`auth-form-group ${
-                touched.email && errors.email ? 'error' : (touched.email && !errors.email && 'success') || ''
-              }`}
-            >
-              <label>Ваш email</label>
-              <input value={values.email} onChange={handleChange} onBlur={handleBlur} name="email" />
-              {touched.email && errors.email && <span className="auth-form-notice">{errors.email}</span>}
-            </div>
-            <div
-              className={`auth-form-group ${
-                touched.name && errors.name ? 'error' : (touched.name && !errors.name && 'success') || ''
+                formik.touched.firstName && formik.errors.firstName
+                  ? 'error'
+                  : (formik.touched.firstName && !formik.errors.firstName && 'success') || ''
               }`}
             >
               <label>Ваше имя</label>
-              <input value={values.name} onChange={handleChange} onBlur={handleBlur} name="name" />
-              {touched.name && errors.name && <span className="auth-form-notice">{errors.name}</span>}
+              <input
+                value={formik.values.firstName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                name="firstName"
+                id="firstName"
+              />
+              {formik.touched.firstName && formik.errors.firstName && (
+                <span className="auth-form-notice">{formik.errors.firstname}</span>
+              )}
             </div>
+
             <div
               className={`auth-form-group ${
-                touched.password && errors.password
+                formik.touched.lastName && formik.errors.lastName
                   ? 'error'
-                  : (touched.password && !errors.password && 'success') || ''
+                  : (formik.touched.lastName && !formik.errors.lastName && 'success') || ''
+              }`}
+            >
+              <label>Ваша фамилия</label>
+              <input
+                value={formik.values.lastName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                name="lastName"
+              />
+              {formik.touched.lastName && formik.errors.lastName && (
+                <span className="auth-form-notice">{formik.errors.lastName}</span>
+              )}
+            </div>
+
+            <div
+              className={`auth-form-group ${
+                formik.touched.login && formik.errors.login
+                  ? 'error'
+                  : (formik.touched.login && !formik.errors.login && 'success') || ''
+              }`}
+            >
+              <label>Ваш логин</label>
+              <input
+                value={formik.values.login}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                name="login"
+              />
+              {formik.touched.login && formik.errors.login && (
+                <span className="auth-form-notice">{formik.errors.login}</span>
+              )}
+            </div>
+
+            <div
+              className={`auth-form-group ${
+                formik.touched.email && formik.errors.email
+                  ? 'error'
+                  : (formik.touched.email && !formik.errors.email && 'success') || ''
+              }`}
+            >
+              <label>Ваш email</label>
+              <input
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                name="email"
+              />
+              {formik.touched.email && formik.errors.email && (
+                <span className="auth-form-notice">{formik.errors.email}</span>
+              )}
+            </div>
+
+            <div
+              className={`auth-form-group ${
+                formik.touched.password && formik.errors.password
+                  ? 'error'
+                  : (formik.touched.password && !formik.errors.password && 'success') || ''
               }`}
             >
               <label>Введите пароль</label>
               <input
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 type="password"
                 name="password"
               />
-              {touched.password && errors.password && <span className="auth-form-notice">{errors.password}</span>}
+              {formik.touched.password && formik.errors.password && (
+                <span className="auth-form-notice">{formik.errors.password}</span>
+              )}
             </div>
             <div
               className={`auth-form-group ${
-                touched.repeatPassword && errors.repeatPassword
+                formik.touched.repeatPassword && formik.errors.repeatPassword
                   ? 'error'
-                  : (touched.repeatPassword && !errors.repeatPassword && 'success') || ''
+                  : (formik.touched.repeatPassword && !formik.errors.repeatPassword && 'success') || ''
               }`}
             >
               <label>Повторите пароль</label>
               <input
-                value={values.repeatPassword}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                value={formik.values.repeatPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 type="password"
                 name="repeatPassword"
               />
-              {touched.repeatPassword && errors.repeatPassword && (
-                <span className="auth-form-notice">{errors.repeatPassword}</span>
+              {formik.touched.repeatPassword && formik.errors.repeatPassword && (
+                <span className="auth-form-notice">{formik.errors.repeatPassword}</span>
               )}
             </div>
             <div className="auth-form-btn">
-              <button onClick={handleSubmit} type="submit">
+              <button disabled={isLoading} onClick={formik.handleSubmit} type="submit">
                 Зарегистрироваться
+                {isLoading && <Spinner />}
               </button>
             </div>
           </form>
@@ -80,8 +167,14 @@ const AuthForm = props => {
       ) : (
         <SuccessAuth />
       )}
-    </Fragment>
+    </div>
   );
 };
 
-export default AuthForm;
+const mapDispatchToProps = dispatch => {
+  return {
+    onSubmit: data => dispatch(fetchAuth(data))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AuthForm);

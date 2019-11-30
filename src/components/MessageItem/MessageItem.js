@@ -1,47 +1,48 @@
 import React from 'react';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import TransformDate from '../TransformDate/TransformDate';
 import AudioMessage from '../AudioMessage/AudioMessage';
+import UserAvatar from '../UserAvatar/UserAvatar';
 
 import styles from './MessageItem.module.scss';
 import typingLoader from '../../assets/icons/typing.svg';
 
-const MessageItem = ({ avatar, message, createdAt, smile, isOwn, isChecked, attachments, isTyping, audio }) => {
+const MessageItem = ({ user, message, smile, isOwn }) => {
+  const { avatar, id } = user;
   return (
     <div
       className={classNames(styles.message, {
         [styles.own]: isOwn,
-        [styles.checked]: isOwn && isChecked
+        [styles.checked]: isOwn && message.isChecked
       })}
     >
       <div className={styles.messageContent}>
         <div className={styles.avatar}>
-          <img src={avatar} alt="avatar" />
+          <UserAvatar user={user} />
         </div>
         <div className={styles.bubbles}>
-          {isTyping && (
+          {message.isTyping && (
             <div className={styles.typingLoader}>
               <img src={typingLoader} alt="typing" />
             </div>
           )}
 
-          {!isTyping && message && (
+          {!message.isTyping && message.text && (
             <div className={styles.messageText}>
-              <span className={`text`}>{message}</span>
+              {message.text && <span className={`text`}>{message.text}</span>}
               {smile && <span className={`smile`}>({smile})</span>}
             </div>
           )}
 
-          {!isTyping && audio && (
+          {!message.isTyping && message.audio && (
             <div className={styles.messageAudio}>
-              <AudioMessage audio={audio} />
+              <AudioMessage audio={message.audio} />
             </div>
           )}
 
-          {!isTyping && attachments && (
+          {!message.isTyping && message.attachments && (
             <ul className={styles.attachments}>
-              {attachments.map(attach => (
+              {message.attachments.map(attach => (
                 <li key={attach.id}>
                   <img src={attach.src} alt={attach.fileName} />
                 </li>
@@ -49,10 +50,10 @@ const MessageItem = ({ avatar, message, createdAt, smile, isOwn, isChecked, atta
             </ul>
           )}
 
-          {!isTyping && createdAt && (
+          {!message.isTyping && message.createdAt && (
             <div className={styles.messageDate}>
               <time>
-                <TransformDate date={createdAt} />
+                <TransformDate date={message.createdAt} />
               </time>
             </div>
           )}
@@ -60,23 +61,6 @@ const MessageItem = ({ avatar, message, createdAt, smile, isOwn, isChecked, atta
       </div>
     </div>
   );
-};
-
-MessageItem.defaultProps = {
-  isOwn: false,
-  smile: null,
-  avatar: ''
-};
-
-MessageItem.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  message: PropTypes.string,
-  date: PropTypes.string,
-  smile: PropTypes.string,
-  isOwn: PropTypes.bool.isRequired,
-  isChecked: PropTypes.bool,
-  attachments: PropTypes.arrayOf(PropTypes.object),
-  isTyping: PropTypes.bool
 };
 
 export default MessageItem;

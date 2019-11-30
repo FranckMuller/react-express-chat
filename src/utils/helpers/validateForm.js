@@ -1,39 +1,86 @@
-const validateForm = ({ isAuth, values, errors }) => {
-  const rules = {
-    email: () => {
-      if (!values.email) {
-        errors.email = 'Введите ваш email';
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Неверный формат email';
-      }
-    },
+const validateForm = values => {
+  // const rules = {
+  //   name: () => {
+  //     if (!values.name) {
+  //       errors.name = 'Введите ваше имя';
+  //     }
+  //   },
 
-    name: () => {
-      if (!values.name) {
-        errors.name = 'Введите ваше имя';
-      } else if (values.name.length <= 5) {
-        errors.name = 'Имя должно содержать более 5 букв';
-      }
-    },
+  //   surname: () => {
+  //     if (!values.surname) {
+  //       errors.surname = 'Введите вашу фамилию';
+  //     }
+  //   },
 
-    password: () => {
-      if (!values.password) {
-        errors.password = 'Введите пароль';
-      } else if (values.password.length <= 7 && isAuth) {
-        errors.password = 'Пароль должен содержать более 7 символов';
-      }
-    },
+  //   email: () => {
+  //     if (!values.email) {
+  //       errors.email = 'Введите ваш email';
+  //     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+  //       errors.email = 'Неверный формат email';
+  //     }
+  //   },
 
-    repeatPassword: () => {
-      if (!values.repeatPassword) {
-        errors.repeatPassword = 'Повторите пароль';
-      } else if (values.repeatPassword !== values.password) {
-        errors.repeatPassword = 'Пароли не совпадают';
-      }
-    }
-  };
+  //   login: () => {
+  //     if (!values.login) {
+  //       errors.login = 'Введите ваше логин';
+  //     } else if (values.login.length < 5) {
+  //       errors.login = 'Логин должен содержать более 4 символов';
+  //     }
+  //   },
 
-  Object.keys(values).forEach(key => rules[key] && rules[key]());
+  //   password: () => {
+  //     if (!values.password) {
+  //       errors.password = 'Введите пароль';
+  //     } else if (values.password.length <= 7 && isAuth) {
+  //       errors.password = 'Пароль должен содержать более 7 символов';
+  //     }
+  //   },
+
+  //   repeatPassword: () => {
+  //     if (!values.repeatPassword) {
+  //       errors.repeatPassword = 'Повторите пароль';
+  //     } else if (values.repeatPassword !== values.password) {
+  //       errors.repeatPassword = 'Пароли не совпадают';
+  //     }
+  //   }
+  // };
+
+  // Object.keys(values).forEach(key => rules[key] && rules[key]());
+
+  const errors = {};
+  console.log(123123123);
+  if (!values.firstName) {
+    errors.firstName = 'Введите ваше имя';
+  }
+
+  if (!values.lastName) {
+    errors.lastName = 'Введите вашу фамилию';
+  }
+
+  if (!values.email) {
+    errors.email = 'Введите ваш email';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Неверный формат email';
+  }
+  if (!values.login) {
+    errors.login = 'Введите ваше логин';
+  } else if (values.login.length < 5) {
+    errors.login = 'Логин должен содержать более 4 символов';
+  }
+
+  if (!values.password) {
+    errors.password = 'Введите пароль';
+  } else if (values.password.length <= 7) {
+    errors.password = 'Пароль должен содержать более 7 символов';
+  }
+
+  if (!values.repeatPassword) {
+    errors.repeatPassword = 'Повторите пароль';
+  } else if (values.repeatPassword !== values.password) {
+    errors.repeatPassword = 'Пароли не совпадают';
+  }
+
+  return errors;
 };
 
 export default validateForm;

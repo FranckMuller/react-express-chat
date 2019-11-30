@@ -1,0 +1,77 @@
+@keyframes ldioYznqnmqqcos {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.ldioYznqnmqqcos div {
+  box-sizing: border-box !important;
+}
+.ldioYznqnmqqcos > div {
+  position: absolute;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  top: 3px;
+  left: 3px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  border-color: #efab15 transparent #efab15 transparent;
+  animation: ldioYznqnmqqcos 0.8849557522123893s linear infinite;
+}
+
+.ldioYznqnmqqcos > div:nth-child(2),
+.ldioYznqnmqqcos > div:nth-child(4) {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  animation: ldioYznqnmqqcos 0.8849557522123893s linear infinite reverse;
+}
+.ldioYznqnmqqcos > div:nth-child(2) {
+  border-color: transparent #ffffff transparent #ffffff;
+}
+.ldioYznqnmqqcos > div:nth-child(3) {
+  border-color: transparent;
+}
+.ldioYznqnmqqcos > div:nth-child(3) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+
+.ldioYznqnmqqcos > div:nth-child(4) {
+  border-color: transparent;
+}
+.ldioYznqnmqqcos > div:nth-child(4) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+.ldioYznqnmqqcos > div:nth-child(4) div:after {
+  left: -1.97px;
+  top: 11.82px;
+  box-shadow: 27.58px 0 0 0 #ffffff;
+}
+.loadingioSpinnerDoubleRingKus1sobfigl {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  overflow: hidden;
+  background: transparent;
+  margin-left: 5px;
+}
+.ldioYznqnmqqcos {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldioYznqnmqqcos div {
+  box-sizing: content-box;
+}
