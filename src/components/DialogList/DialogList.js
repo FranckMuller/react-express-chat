@@ -10,6 +10,7 @@ const DialogList = ({ dialogs, getDialogs }) => {
   console.log(dialogs);
   useEffect(() => {
     getDialogs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {}, [dialogs]);

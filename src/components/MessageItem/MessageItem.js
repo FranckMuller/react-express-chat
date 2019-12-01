@@ -8,7 +8,6 @@ import styles from './MessageItem.module.scss';
 import typingLoader from '../../assets/icons/typing.svg';
 
 const MessageItem = ({ user, message, smile, isOwn }) => {
-  const { avatar, id } = user;
   return (
     <div
       className={classNames(styles.message, {

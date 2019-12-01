@@ -1,12 +1,12 @@
 import { signUp } from '../../api';
 
 const fetchAuth = data => async dispatch => {
-  signUp(data)
+  return signUp(data)
     .then(res => {
-      return res;
+      console.log(res);
     })
     .catch(err => {
-      throw err;
+      return err.response.data.message;
     });
 };
 

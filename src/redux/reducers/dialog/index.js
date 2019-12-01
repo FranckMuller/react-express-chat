@@ -11,7 +11,6 @@ const dialogReducer = (state = initialState, { type, payload }) => {
         ...state,
         items: payload
       };
-      break;
 
     default:
       return state;
