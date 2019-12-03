@@ -1,9 +1,9 @@
 import React from 'react';
-import { LoginFormModule } from '../modules';
+import { LoginForm } from '../components';
 
 const LoginPage = () => (
   <div className="page">
-    <LoginFormModule />
+    <LoginForm />
   </div>
 );
 

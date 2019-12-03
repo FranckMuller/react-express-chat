@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 
-import { fetchAuth } from '../../redux/actions';
 import { validateForm as validate } from '../../utils';
+import { signUp } from '../../api';
+
 import Spinner from '../Spinner/Spinner';
 import Alert from '../Alert/Alert';
 
@@ -21,16 +21,28 @@ const AuthForm = props => {
       lastName: '',
       email: '',
       password: '',
-      repeatPassword: '',
+      confirmPassword: '',
       login: ''
     },
     validate,
     onSubmit: values => {
       toggleLoading(true);
-      props.onSubmit(values).then(err => {
-        err ? setError(err) : toggleIsAuthed(true);
-        toggleLoading(false);
-      });
+      signUp(values)
+        .then(res => {
+          toggleIsAuthed(true);
+        })
+        .catch(err => {
+          let error;
+          if (!err.response) {
+            error = 'ошибка сети';
+          } else {
+            error = err.response.data.message;
+          }
+          setError(error);
+        })
+        .finally(() => {
+          toggleLoading(false);
+        });
     }
   });
 
@@ -65,7 +77,7 @@ const AuthForm = props => {
               id="firstName"
             />
             {formik.touched.firstName && formik.errors.firstName && (
-              <span className="auth-form-notice">{formik.errors.firstname}</span>
+              <span className="auth-form-notice">{formik.errors.firstName}</span>
             )}
           </div>
 
@@ -159,24 +171,24 @@ const AuthForm = props => {
           </div>
           <div
             className={`auth-form-group ${
-              formik.touched.repeatPassword && formik.errors.repeatPassword
+              formik.touched.confirmPassword && formik.errors.confirmPassword
                 ? 'error'
-                : (formik.touched.repeatPassword && !formik.errors.repeatPassword && 'success') || ''
+                : (formik.touched.confirmPassword && !formik.errors.confirmPassword && 'success') || ''
             }`}
           >
             <label>Повторите пароль</label>
             <input
-              value={formik.values.repeatPassword}
+              value={formik.values.confirmPassword}
               onChange={e => {
                 formik.handleChange(e);
                 clearError();
               }}
               onBlur={formik.handleBlur}
               type="password"
-              name="repeatPassword"
+              name="confirmPassword"
             />
-            {formik.touched.repeatPassword && formik.errors.repeatPassword && (
-              <span className="auth-form-notice">{formik.errors.repeatPassword}</span>
+            {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+              <span className="auth-form-notice">{formik.errors.confirmPassword}</span>
             )}
           </div>
           <div className="auth-form-btn">
@@ -196,11 +208,4 @@ const AuthForm = props => {
     </div>
   );
 };
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onSubmit: data => dispatch(fetchAuth(data))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(AuthForm);
+export default AuthForm;

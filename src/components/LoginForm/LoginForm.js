@@ -1,22 +1,37 @@
 import React from 'react';
+import { useFormik } from 'formik';
+import { validateForm } from '../../utils';
 import { NavLink } from 'react-router-dom';
 
 const LoginForm = props => {
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
+  const formik = useFormik({
+    initialValues: {
+      loginValue: '',
+      password: ''
+    },
+    validate: values => validateForm(values, { isAuth: true }),
+    onSubmit: values => {
+      console.log('on submit');
+    }
+  });
+
+  const { values, touched, errors, handleChange, handleBlur, handleSubmit } = formik;
 
   return (
     <div className="auth-form">
       <h3 className="form-title">Вход</h3>
       <p className="form-description">Пожалуйста войдите в аккаунт</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <div
           className={`auth-form-group ${
-            touched.email && errors.email ? 'error' : (touched.email && !errors.email && 'success') || ''
+            touched.loginValue && errors.loginValue
+              ? 'error'
+              : (touched.loginValue && !errors.loginValue && 'success') || ''
           }`}
         >
-          <label>Ваш email</label>
-          <input value={values.email} onChange={handleChange} onBlur={handleBlur} name="email" />
-          {touched.email && errors.email && <span className="auth-form-notice">{errors.email}</span>}
+          <label>Введите ваш email или логин</label>
+          <input value={values.loginValue} onChange={handleChange} onBlur={handleBlur} name="loginValue" />
+          {touched.loginValue && errors.loginValue && <span className="auth-form-notice">{errors.loginValue}</span>}
         </div>
         <div
           className={`auth-form-group ${
