@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import DialogItem from '../DialogItem/DialogItem';
 import { fetchDialogs } from '../../redux/actions/dialog';
-import { selectDialogs } from '../../selectors/dialog';
+import { selectDialogs } from '../../selectors/dialogs';
 
 import styles from './DialogList.module.scss';
 

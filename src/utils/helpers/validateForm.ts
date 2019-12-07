@@ -1,5 +1,7 @@
-const validateForm = (values, { isAuth } = { isAuth: false }) => {
-  const errors = {};
+import { FormikValues } from 'formik';
+
+const validateForm = (values: FormikValues, { isAuth } = { isAuth: false }) => {
+  const errors: { [key: string]: string } = {};
   if (!isAuth) {
     if (!values.firstName) {
       errors.firstName = 'Введите ваше имя';

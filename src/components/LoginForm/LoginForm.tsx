@@ -1,27 +1,15 @@
 import React from 'react';
-import { useFormik } from 'formik';
-import { validateForm } from '../../utils';
+import { FormikProps } from 'formik';
 import { NavLink } from 'react-router-dom';
 
-const LoginForm = props => {
-  const formik = useFormik({
-    initialValues: {
-      loginValue: '',
-      password: ''
-    },
-    validate: values => validateForm(values, { isAuth: true }),
-    onSubmit: values => {
-      console.log('on submit');
-    }
-  });
-
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } = formik;
+const LoginForm: React.FC<FormikProps<any>> = props => {
+  const { values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
 
   return (
     <div className="auth-form">
       <h3 className="form-title">Вход</h3>
       <p className="form-description">Пожалуйста войдите в аккаунт</p>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div
           className={`auth-form-group ${
             touched.loginValue && errors.loginValue
@@ -43,9 +31,7 @@ const LoginForm = props => {
           {touched.password && errors.password && <span className="auth-form-notice">{errors.password}</span>}
         </div>
         <div className="auth-form-btn">
-          <button onClick={handleSubmit} type="submit">
-            Войти
-          </button>
+          <button type="submit">Войти</button>
         </div>
       </form>
       <NavLink className="auth-form-link" to="/signup">

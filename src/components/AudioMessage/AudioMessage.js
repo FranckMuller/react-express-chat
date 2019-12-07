@@ -8,7 +8,7 @@ import playIcon from '../../assets/icons/play.svg';
 import pauseIcon from '../../assets/icons/pause.svg';
 
 const AudioMessage = ({ audio }) => {
-  const [isPlaing, togglePlay] = useState(false);
+  const [isPlaying, togglePlay] = useState(false);
   const [displayedTime, updateDisplayedTime] = useState(null);
   const [progress, updateProgress] = useState(0);
   const audioEl = useRef(null);
@@ -37,7 +37,7 @@ const AudioMessage = ({ audio }) => {
   }, []);
 
   const onTogglePlay = () => {
-    if (isPlaing) {
+    if (isPlaying) {
       audioEl.current.pause();
     } else {
       audioEl.current.play();
@@ -49,8 +49,8 @@ const AudioMessage = ({ audio }) => {
       <span style={{ width: `${progress}%` }} className={styles.progress}></span>
       <span className={styles.progressIcon}></span>
       <button onClick={onTogglePlay} className={styles.audioBtn}>
-        {!isPlaing && <img src={playIcon} alt="play" />}
-        {isPlaing && <img src={pauseIcon} alt="play" />}
+        {!isPlaying && <img src={playIcon} alt="play" />}
+        {isPlaying && <img src={pauseIcon} alt="play" />}
       </button>
       <span className={styles.time}>{displayedTime}</span>
       <audio ref={audioEl} preload="auto" src={audio}></audio>

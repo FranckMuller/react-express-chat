@@ -1,4 +1,4 @@
-import { UPDATE_DIALOGS } from '../reducers/dialog';
+import { UPDATE_DIALOGS } from '../reducers/dialogs';
 import { getAllDialogs } from '../../api';
 
 const updateDialogs = dialogs => ({
