@@ -6,7 +6,6 @@ import { validateForm as validate } from '../../utils';
 import { signUp } from '../../api';
 
 import Spinner from '../Spinner/Spinner';
-import Alert from '../Alert/Alert';
 
 import styles from './AuthForm.module.scss';
 
@@ -203,7 +202,6 @@ const AuthForm = props => {
         </NavLink>
 
         {isAuthed && <div>Вы успешно создали аккаунт, теперь вы можете войти в систему.</div>}
-        {error && <Alert message={error} />}
       </div>
     </div>
   );

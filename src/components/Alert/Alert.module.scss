@@ -1,8 +1,98 @@
 @import '../../styles/variables.scss';
 
 .alert {
-  background-color: $red;
-  color: $white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
+  font-size: 0.8rem;
+  max-width: 250px;
+  color: #fff;
+  transition: bottom 0.5s;
+  padding: 0.5em 0;
+
+  .alertContent {
+    text-align: center;
+    padding: 1.2em 25px 1.2em 1.2em;
+    position: relative;
+    border-radius: 0.5em;
+    .closeBtn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      img {
+        height: 10px;
+        width: 10px;
+      }
+    }
+  }
+
+  &.danger {
+  }
+
+  &.error {
+    .alertContent {
+      background-color: $red;
+    }
+  }
+}
+
+// .alert-enter {
+//   opacity: 0;
+// }
+
+// .enter-active {
+//   opacity: 1;
+//   transition: opacity 200ms;
+// }
+
+// .alert-exit {
+//   opacity: 1;
+// }
+// .alert-exit-active {
+//   opacity: 0;
+//   transition: opacity 200ms;
+// }
+
+.alertExit {
+  animation: close-alert 0.5s ease-in-out forwards;
+}
+
+.alertEnter {
+  animation: alert-enter 0.5s ease-in-out forwards;
+}
+
+@keyframes alert-enter {
+  0% {
+    bottom: 20px;
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(40px);
+    opacity: 0.5;
+  }
+  90% {
+    transform: translateX(-20px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes close-alert {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  10% {
+    transform: translateX(-20px);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateX(40px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
 }

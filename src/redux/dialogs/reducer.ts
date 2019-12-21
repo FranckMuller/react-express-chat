@@ -1,4 +1,4 @@
-import { TypedAction } from '../../types';
+import { TypedAction } from '../types';
 
 export const UPDATE_DIALOGS = 'UPDATE_DIALOGS';
 

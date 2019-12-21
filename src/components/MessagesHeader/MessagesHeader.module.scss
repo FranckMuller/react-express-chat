@@ -10,6 +10,8 @@
   background-color: $dark-white;
   margin-bottom: 0.4rem;
   border-bottom: 1px solid $gray;
+  position: relative;
+  border-radius: 0 0.5rem 0.5rem 0;
 
   .userName {
     font-weight: 600;
@@ -35,5 +37,18 @@
         background-color: $green;
       }
     }
+  }
+
+  .menuBtn {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    background-image: url('../../assets/icons/menu-btn.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 6px;
+    height: 18px;
+    margin-top: -6px;
   }
 }

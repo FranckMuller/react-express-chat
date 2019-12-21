@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import DialogItem from '../DialogItem/DialogItem';
-import { fetchDialogs } from '../../redux/actions/dialog';
+import { fetchDialogs } from '../../redux/dialogs/actions';
 import { selectDialogs } from '../../selectors/dialogs';
 
 import styles from './DialogList.module.scss';
 
 const DialogList = ({ dialogs, getDialogs }) => {
-  console.log(dialogs);
-  useEffect(() => {
-    getDialogs();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   getDialogs();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
-  useEffect(() => {}, [dialogs]);
+  // useEffect(() => {}, [dialogs]);
 
   return (
     <div className={styles.dialogList}>

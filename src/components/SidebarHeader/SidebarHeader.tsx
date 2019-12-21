@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './SidebarHeader.module.scss';
 import dialogsIcon from '../../assets/icons/dialogs-icon.svg';
 
-const SidebarHeader = () => {
+const SidebarHeader: React.FC = () => {
   return (
     <div className={styles.sidebarHeader}>
       <div className={styles.heading}>

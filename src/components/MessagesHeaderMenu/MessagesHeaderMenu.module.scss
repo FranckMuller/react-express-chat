@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+.messagesHeaderMenu {
+  position: absolute;
+  top: 100%;
+  z-index: 20;
+  right: 0;
+  min-width: 200px;
+  background-color: $dark-white;
+  border: 1px solid $gray;
+  margin-right: -1px;
+  overflow: hidden;
+  ul {
+    li {
+      padding: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.5s ease;
+      padding-left: 30px;
+      &:hover {
+        background-color: $white;
+      }
+
+      &.addContact {
+        background-image: url('../../assets/icons/plus.svg');
+        background-size: 12px 12px;
+        background-repeat: no-repeat;
+        background-position: 10px center;
+      }
+    }
+  }
+}
+
+.menuActiveEnter {
+  animation: enter-menu 0.3s ease-in forwards;
+}
+
+.menuActiveExit {
+  animation: enter-menu 0.3s ease-in reverse forwards;
+}
+
+@keyframes enter-menu {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -51,6 +51,15 @@ body {
   flex-direction: column;
 }
 
+#alertWrapper {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .page {
   flex-grow: 1;
   flex-shrink: 1;

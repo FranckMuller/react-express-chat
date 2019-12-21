@@ -1,1 +1,0 @@
-export { fetchAuth } from './auth';

@@ -1,9 +1,14 @@
 import React from 'react';
 import { FormikProps } from 'formik';
 import { NavLink } from 'react-router-dom';
+import Spinner from '../Spinner/Spinner';
 
-const LoginForm: React.FC<FormikProps<any>> = props => {
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
+type LoginFormProps = {
+  isLoading: boolean;
+};
+
+const LoginForm: React.FC<FormikProps<any> & LoginFormProps> = props => {
+  const { values, touched, errors, handleChange, handleBlur, handleSubmit, isLoading } = props;
 
   return (
     <div className="auth-form">
@@ -31,7 +36,10 @@ const LoginForm: React.FC<FormikProps<any>> = props => {
           {touched.password && errors.password && <span className="auth-form-notice">{errors.password}</span>}
         </div>
         <div className="auth-form-btn">
-          <button type="submit">Войти</button>
+          <button type="submit">
+            Войти
+            {isLoading && <Spinner />}
+          </button>
         </div>
       </form>
       <NavLink className="auth-form-link" to="/signup">
