@@ -23,7 +23,10 @@
     }
   }
 
-  &.danger {
+  &.warning {
+    .alertContent {
+      background-color: $orange;
+    }
   }
 
   &.error {

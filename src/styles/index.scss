@@ -22,8 +22,6 @@ button {
   outline: none;
   background: transparent;
   cursor: pointer;
-  display: flex;
-  align-items: center;
 
   &:disabled {
     cursor: not-allowed !important;
@@ -33,6 +31,10 @@ button {
 input {
   border: none;
   outline: none;
+  font-family: 'Montserrat', sans-serif;
+  &::placeholder {
+    font-family: 'Montserrat', sans-serif;
+  }
   &:focus::placeholder {
     color: transparent;
   }
@@ -58,6 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  z-index: 200;
 }
 
 .page {

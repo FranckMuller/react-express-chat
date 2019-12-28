@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Dialogs from '../Dialogs/Dialogs';
 import Messages from '../Messages/Messages';
 import { SidebarHeader, MessagesHeader, MessageInput } from '../../components';
+import { AddContactForm } from '../../components';
 
 import styles from './Chat.module.scss';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
@@ -12,10 +13,8 @@ const Chat: React.FC = () => {
 
   const onAddContact = () => {
     toggleModal(true);
-    setModalContent(<div>asdasdasdasdasd</div>);
+    setModalContent(<AddContactForm />);
   };
-
-  useEffect(() => {}, [modalContent]);
 
   return (
     <div className={styles.chat}>
@@ -43,9 +42,7 @@ const Chat: React.FC = () => {
         </div>
       </div>
 
-      <ModalWindow isShowed={isShowedModal} title={'Введите логин или email'}>
-        {modalContent}
-      </ModalWindow>
+      <ModalWindow isShowed={isShowedModal}>{modalContent}</ModalWindow>
     </div>
   );
 };

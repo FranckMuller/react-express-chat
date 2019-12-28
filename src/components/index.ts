@@ -5,3 +5,4 @@ export { default as DialogList } from './DialogList/DialogList';
 export { default as SidebarHeader } from './SidebarHeader/SidebarHeader';
 export { default as MessagesHeader } from './MessagesHeader/MessagesHeader';
 export { default as MessageInput } from './MessageInput/MessageInput';
+export { default as AddContactForm } from './AddContactForm/AddContactFormContainer';

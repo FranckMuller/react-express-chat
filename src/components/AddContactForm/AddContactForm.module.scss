@@ -1,0 +1,85 @@
+@import '../../styles/variables.scss';
+
+.addContactForm {
+  > form,
+  .confirmSearch {
+    min-width: 500px;
+    background-color: #fff;
+    padding: 1em;
+    font-size: 1rem;
+  }
+
+  .confirmSearch {
+    .user {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      padding-bottom: 0.8rem;
+    }
+  }
+
+  form {
+    &.searchFormExit {
+      animation: exit-search-form 0.5s ease-in-out forwards;
+    }
+
+    .inputGroup {
+      & + .inputGroup {
+        margin-top: 0.8rem;
+      }
+
+      input {
+        border-bottom: 1px solid $gray;
+        width: 100%;
+        padding: 0.3rem 0.7rem;
+      }
+
+      label {
+        margin-bottom: 1em;
+        font-size: 0.7em;
+        display: block;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .btn {
+    margin-top: 1.5em;
+    background-color: $blue;
+    font-size: 1em;
+    padding: 0.4em 0.8em;
+    color: #fff;
+    border-radius: 0.1em;
+    width: 100%;
+  }
+}
+
+.confirmSearchEnter {
+  animation: enter-search-confrim 0.5s ease-in-out forwards;
+}
+
+@keyframes exit-search-form {
+  from {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(100vw) scale(0.3);
+  }
+}
+
+@keyframes enter-search-confrim {
+  from {
+    transform: translateX(-100vw) scale(0.3);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}

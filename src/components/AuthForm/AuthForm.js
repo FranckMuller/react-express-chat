@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 
 import { validateForm as validate } from '../../utils';
-import { signUp } from '../../api';
+import { signUp } from '../../api/auth';
 
 import Spinner from '../Spinner/Spinner';
 
@@ -172,7 +172,8 @@ const AuthForm = props => {
             className={`auth-form-group ${
               formik.touched.confirmPassword && formik.errors.confirmPassword
                 ? 'error'
-                : (formik.touched.confirmPassword && !formik.errors.confirmPassword && 'success') || ''
+                : (formik.touched.confirmPassword && !formik.errors.confirmPassword && 'success') ||
+                  ''
             }`}
           >
             <label>Повторите пароль</label>

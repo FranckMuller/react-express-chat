@@ -4,8 +4,9 @@ import { CSSTransition } from 'react-transition-group';
 import styles from './ModalWindow.module.scss';
 import ReactDOM from 'react-dom';
 
+import closeIcon from '../../assets/icons/close-black.svg';
+
 export interface ModalWindowProps {
-  title: string;
   isShowed: boolean;
 }
 
@@ -34,16 +35,18 @@ const ModalWindow: React.SFC<ModalWindowProps> = props => {
       unmountOnExit
     >
       <div className={styles.modalWindow}>
-        <div className={styles.modalWindowContent}>
-          <h3 className={styles.title}>{props.title}</h3>
-          {props.children}
-        </div>
-        <button onClick={onClose}>close</button>
+        <div className={styles.modalWindowContent}>{props.children}</div>
+        <button className={styles.closeBtn} onClick={onClose}>
+          <img src={closeIcon} alt="close" />
+        </button>
       </div>
     </CSSTransition>
   );
 
-  return ReactDOM.createPortal(modal, window.document.getElementById('modalWindowWrapper') as HTMLElement);
+  return ReactDOM.createPortal(
+    modal,
+    window.document.getElementById('modalWindowWrapper') as HTMLElement
+  );
 };
 
 export default ModalWindow;

@@ -1,4 +1,4 @@
-import axios, { AxiosPromise } from 'axios';
+import axios from '../core';
 
 export type SignUpData = {
   firstName: string;
@@ -14,12 +14,10 @@ export type SignInData = {
   password: string;
 };
 
-const signUp = (data: SignUpData): AxiosPromise => {
+export const signUp = (data: SignUpData) => {
   return axios.post('/signup', data);
 };
 
-const signIn = (data: SignInData): AxiosPromise => {
+export const signIn = (data: SignInData) => {
   return axios.post('/signin', data);
 };
-
-export { signUp, signIn };
